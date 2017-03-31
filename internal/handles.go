@@ -493,13 +493,15 @@ func (fh *FileHandle) waitForCreateMPU(fs *Goofys) (err error) {
 }
 
 func (fh *FileHandle) partSize() uint64 {
-	if fh.lastPartId < 1000 {
+	/*if fh.lastPartId < 1000 {
 		return 5 * 1024 * 1024
 	} else if fh.lastPartId < 2000 {
 		return 25 * 1024 * 1024
 	} else {
 		return 125 * 1024 * 1024
 	}
+	*/
+	return 2 * 1024 * 1024 * 1024 //2GB
 }
 
 func (fh *FileHandle) WriteFile(fs *Goofys, offset int64, data []byte) (err error) {
